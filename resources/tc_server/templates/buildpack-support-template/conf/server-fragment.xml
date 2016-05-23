@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+  Cloud Foundry tc Server Buildpack
+  Copyright (c) 2013 Pivotal, Inc.  All rights reserved.
+-->
+
+<Server>
+  <Service>
+    <Engine>
+      <add:Valve className="com.gopivotal.cloudfoundry.tomcat.logging.access.CloudFoundryAccessLoggingValve"
+                 pattern='[ACCESS] %h %l %u %t "%r" %s %b %{X-Vcap-Request-Id}i' enabled="${access.logging.enabled}"/>
+      <Host>
+        <add:Listener className="com.gopivotal.cloudfoundry.tomcat.lifecycle.ApplicationStartupFailureDetectingLifecycleListener"/>
+      </Host>
+    </Engine>
+  </Service>
+</Server>

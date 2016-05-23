@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+  Cloud Foundry tc Server Buildpack
+  Copyright (c) 2013 Pivotal, Inc.  All rights reserved.
+-->
+
+<Server port='-1'>
+
+  <Listener className='org.apache.catalina.core.JasperListener'/>
+
+  <Service name='Catalina'>
+    <Connector port='@http.port@' bindOnInit="false"/>
+
+    <Engine defaultHost='localhost' name='Catalina'>
+      <Host name='localhost'>
+        <Listener className="com.gopivotal.buildpack.support.tomcat.ApplicationStartupFailureDetectingLifecycleListener"/>
+      </Host>
+    </Engine>
+  </Service>
+
+</Server>
